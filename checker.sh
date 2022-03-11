@@ -1,4 +1,4 @@
-gcc -Wall -Wextra -Werror microshell3.c -o microshell
+gcc -Wall -Wextra -Werror microshell4.c -o microshell
 if [ $? -ne 0 ]
 then
   echo -e '\033[0;31m' COMPILATION FAILED '\033[0m'
@@ -82,15 +82,15 @@ echo -e "\n\033[1;36mTEST7 :
 ./microshell ";" ";" ";" ";" ";" ";" ";" ";" ";" ";" ";" ";" ";" ";" ";" ";" ";" ";" ";" ";" ";" ";" ";"
 
 echo -e "\n\033[1;36mTEST8 :
- "\;" "\;" /bin/echo OK:\033[0;37m"
+ "\;" "\;" /bin/echo OK\033[0;37m"
 ./microshell ";" ";" /bin/echo OK
 
 echo -e "\n\033[1;36mTEST9 :
- "\;" "\;" /bin/echo OK "\;":\033[0;37m"
+ "\;" "\;" /bin/echo OK "\;"\033[0;37m"
  ./microshell ";" ";" /bin/echo OK ;
 
 echo -e "\n\033[1;36mTEST10 :
- "\;" "\;" /bin/echo OK "\;" /bin/echo OK:\033[0;37m"
+ "\;" "\;" /bin/echo OK "\;" /bin/echo OK\033[0;37m"
 ./microshell ";" ";" /bin/echo OK ";" /bin/echo OK
 
 echo -e "\n\033[1;36mTEST11 :
@@ -172,6 +172,19 @@ echo -e "\n\033[1;36mTEST29 :
 echo -e "\n\033[1;36mTEST30 :
  "\;" "\;" "\;" "\;" "\;" "\;" "\;" "\;" "\;" "\;" "\;" "\;" "\;" "\;" "\;" "\;" "\;" "\;" "\;" "\;" "\;" blah "\|" /bin/echo OK "\;" "\;" "\;" "\;" "\;" "\;" "\;" "\;" "\;" "\;" "\;" "\;" "\;" "\;" "\;" "\;" "\;" "\;" "\;" "\;" "\;"\033[0;37m"
 ./microshell ";" ";" ";" ";" ";" ";" ";" ";" ";" ";" ";" ";" ";" ";" ";" ";" ";" ";" ";" ";" ";" blah "|" /bin/echo OK ";" ";" ";" ";" ";" ";" ";" ";" ";" ";" ";" ";" ";" ";" ";" ";" ";" ";" ";" ";" ";"
+
+echo -e "\n\033[1;36mTEST31 :
+ cd dir_not_exist  \033[0;37m"
+./microshell cd dir_not_exist
+
+echo -e "\n\033[1;36mTEST31 :
+ cd WITHOUT REQUIRED ARGUMENT \033[0;37m"
+./microshell cd
+
+echo -e "\n\033[1;36mTEST33 :
+ cd dir_not_exist exceeded_arg_limit_dir \033[0;37m"
+./microshell cd dir_not_exist exceeded_arg_limit_dir
+
 rm file.txt
 rm temp_my_out
 rm temp_bash_out
